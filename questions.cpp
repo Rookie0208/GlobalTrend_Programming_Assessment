@@ -1,5 +1,3 @@
-// QUESTION 1 : Write a function to reverse a singly linked list.The function should take the head of the list and return the new head of the reversed list.
-
 #include <bits/stdc++.h>
 using namespace std;
 class TreeNode {
@@ -38,6 +36,7 @@ void preorder(TreeNode *root) {
     preorder(root->right);
 }
 
+// QUESTION 1 : Write a function to reverse a singly linked list.The function should take the head of the list and return the new head of the reversed list.
 Node *reverseList(Node *head)
 {
     if (head == NULL)
@@ -55,39 +54,6 @@ Node *reverseList(Node *head)
     }
     return prev;
 }
-/*
-int main()
-{
-    Node *head = new Node(10);
-    Node *num1 = new Node(20);
-    Node *num2 = new Node(30);
-    Node *num3 = new Node(40);
-    Node *num4 = new Node(50);
-    head->next = num1;
-    num1->next = num2;
-    num2->next = num3;
-    num3->next = num4;
-    // num4->next = NULL;
-    Node *curr = head;
-    cout << "Before Reverse : " << endl;
-    while (head != NULL)
-    {
-        cout << head->data << " -> ";
-        head = head->next;
-    }
-    cout << "NULL" << endl;
-
-    head = curr;
-    Node *newhead = reverseList(head);
-    cout << "After Reverse : " << endl;
-    while (newhead != NULL)
-    {
-        cout << newhead->data << " -> ";
-        newhead = newhead->next;
-    }
-    cout << "NULL";
-}
-*/
 
 // QUESTION 2 : Given a string, find the length of the longest substring without repeating characters.The function should return an integer representing the length of the longest substring without repeating characters.
 int findLongestSubstring(string s) {
@@ -180,25 +146,7 @@ TreeNode *deserializeBST(string str) {
     }
     return root;
 }
-int main() {
-    // string s = "cadbzabcd";
-    // cout << findLongestSubstring(s);
-    TreeNode *root = new TreeNode(10);
-    TreeNode *node1 = new TreeNode(20);
-    TreeNode *node2 = new TreeNode(30);
-    TreeNode *node3 = new TreeNode(40);
-    TreeNode *node4 = new TreeNode(50);
-    root->left = node1;
-    root->right = node2;
-    node2->left = node3;
-    node2->right = node4;
-    preorder(root);
-    cout << endl;
-    string deserializeString = serializeBST(root);
-    cout << deserializeString << endl;
-    TreeNode *newNode = deserializeBST(deserializeString);
-    preorder(newNode);
-}
+
 //  QUESTION 5 : Write a function to rotate an array to the right by k steps.The function should modify the array in place to achieve the rotation.
 vector<int> solve(vector<int> &a, int n, int k, int b[])
 {
@@ -207,13 +155,6 @@ vector<int> solve(vector<int> &a, int n, int k, int b[])
         a[(i + k) % n] = b[(i % n) % n];
     }
     return a;
-}
-
-void rotate2(std::vector<int>& nums, int k) {
-    k = k % nums.size();
-    std::reverse(nums.begin(), nums.end());
-    std::reverse(nums.begin(), nums.begin() + k);
-    std::reverse(nums.begin() + k, nums.end());
 }
 
 void rotate(vector<int>& nums, int k) {
@@ -231,7 +172,6 @@ int factorial(int n) {
 }
 
 //  QUESTION 7 : Write a function to compute the sum of the digits of a given number.The function should return the sum of the digits of the number.
-
 int sumOfDigits(int num) {
     int sum = 0;
     while (num > 0) {
@@ -252,19 +192,18 @@ int gcd(int a, int b) {
 }
 
 //  QUESTION 9 : Write a function to find the maximum difference between any two elements in an array.The function should return the maximum difference between any two elements in the array.
-int maxDifference(std::vector<int>& nums) {
+int maxDifference(vector<int>& nums) {
     if (nums.size() < 2) return 0;
     int minElement = nums[0];
     int maxDiff = 0;
     for (int i = 1; i < nums.size(); ++i) {
-        maxDiff = std::max(maxDiff, nums[i] - minElement);
-        minElement = std::min(minElement, nums[i]);
+        maxDiff = max(maxDiff, nums[i] - minElement);
+        minElement = min(minElement, nums[i]);
     }
     return maxDiff;
 }
 //  QUESTION 10 : Write a function to check if a given string contains only alphabetic characters.The function should return true if the string contains only alphabetic characters, and false otherwise.
-
-bool isAlphabetic(const std::string& s) {
+bool isAlphabetic(string& s) {
     for (char c : s) {
         if (!isalpha(c)) return false;
     }
